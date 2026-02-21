@@ -28,8 +28,10 @@ y_predict=cat.predict(X_test)
 #Use pickle to save our model so that we can use it later
 
 import pickle
-# Saving model
-pickle.dump(cat, open('model.pkl','wb'))
-model=pickle.load(open('model.pkl','rb'))
-print(y_predict)
+import os
 
+# Saving model
+BASE_DIR = os.path.dirname(__file__)
+model_path = os.path.join(BASE_DIR, "model.pkl")
+
+model = pickle.load(open(model_path, "rb"))
