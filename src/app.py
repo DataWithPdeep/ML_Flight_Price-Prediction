@@ -3,10 +3,13 @@ from flask_cors import cross_origin
 import sklearn
 import pickle
 import pandas as pd
+import os
 
 app = Flask(__name__)
-model = pickle.load(open("model.pkl", "rb"))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "model.pkl")
 
+model = pickle.load(open(model_path, "rb"))
 
 
 @app.route("/")
